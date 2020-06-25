@@ -1,0 +1,42 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: petclinic
+  name: petclinic
+  namespace: default
+spec:
+  replicas: 3
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+    minReadySeconds: 10
+  template:
+    metadata:
+      labels:
+        app: petclinic
+    spec:
+      terminationGracePeriodSeconds: 30
+      securityContext:
+        runAsUser: 1000
+      containers:
+        - image: jzwaylove/petclinic-mysql:latest
+          imagePullPolicy: IfNotPresent
+          name: petclinic
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /manage/health
+              port: 8080
+            failureThreshold: 3
+            periodSeconds: 10
+          volumeMounts:
+            - name: logs-volumes
+              mountPath: /logs
+      volumes:
+        - name: logs-volumes
+          emptyDir: {}
