@@ -48,3 +48,5 @@ org/springframework/samples/petclinic/system/WelcomeController.java
  org.springframework.samples.petclinic.system.WelcomeController
 org/springframework/samples/petclinic/owner/PetValidator.java
  org.springframework.samples.petclinic.owner.PetValidator
+org/springframework/samples/petclinic/system/HealthCheck.java
+ org.springframework.samples.petclinic.system.HealthCheck
