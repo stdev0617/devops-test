@@ -13,7 +13,7 @@ spec:
         app: mysql
     spec:
       containers:
-        - image: mysql:5.6
+        - image: msimmons719/mysql5.7.30:test
           name: mysql
           env:
             # Use secret in real usage
@@ -21,19 +21,19 @@ spec:
               value: petclinic
             - name: MYSQL_USER
               valueFrom:
-                - secretKeyRef:
-                    name: mysql-secret
-                    key: username
+                secretKeyRef:
+                  name: mysql-secret
+                  key: username
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
-                - secretKeyRef:
-                    name: mysql-secret
-                    key: password
+                secretKeyRef:
+                  name: mysql-secret
+                  key: password
             - name: MYSQL_PASSWORD
               valueFrom:
-                - secretKeyRef:
-                    name: mysql-secret
-                    key: password
+                secretKeyRef:
+                  name: mysql-secret
+                  key: password
           ports:
             - containerPort: 3306
               name: mysql

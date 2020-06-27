@@ -5,6 +5,20 @@
 plugins {
     id 'java'
     id 'maven-publish'
+    id 'org.springframework.boot' version '2.2.7.RELEASE'
+    id 'com.palantir.docker' version '0.25.0'
+}
+
+ext {
+  BUILD_VERSION='1.0.0'
+}
+
+docker {
+    dependsOn tasks.build
+    name "stdev0617/petclinic"
+    tags "latest", "${BUILD_VERSION}"
+    files bootJar.archivePath
+    buildArgs(['JAR_FILE': "${bootJar.archiveName}"])
 }
 
 repositories {

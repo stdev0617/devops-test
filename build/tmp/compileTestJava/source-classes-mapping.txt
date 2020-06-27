@@ -1,7 +1,7 @@
-org/springframework/samples/petclinic/owner/PetTypeFormatterTests.java
- org.springframework.samples.petclinic.owner.PetTypeFormatterTests
 org/springframework/samples/petclinic/PetclinicIntegrationTests.java
  org.springframework.samples.petclinic.PetclinicIntegrationTests
+org/springframework/samples/petclinic/owner/PetTypeFormatterTests.java
+ org.springframework.samples.petclinic.owner.PetTypeFormatterTests
 org/springframework/samples/petclinic/vet/VetControllerTests.java
  org.springframework.samples.petclinic.vet.VetControllerTests
 org/springframework/samples/petclinic/vet/VetTests.java

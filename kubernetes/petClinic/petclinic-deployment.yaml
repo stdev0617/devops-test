@@ -24,13 +24,16 @@ spec:
       terminationGracePeriodSeconds: 30
       securityContext:
         runAsUser: 1000
+      tolerations:
+        - key: node-role.kubernetes.io/master
+          effect: NoSchedule
       containers:
-        - image: jzwaylove/petclinic-mysql:latest
+        - image: stdev0617/petclinic
           imagePullPolicy: IfNotPresent
           name: petclinic
           env:
-            - name: SPRING_DATESOURCE_URL
-              value: mysql-service.default.svc.cluster.local
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://mysql-service.default.svc.cluster.local/petclinic
           ports:
             - containerPort: 8080
               protocol: TCP
